@@ -1,0 +1,38 @@
+<%- include('partials/header') -%>
+    <div id="showBlog">
+        <div class="container">
+            <div class="row justify-content-center p-5">
+                <div class="col-12">
+                    <div class="show-image">
+                        <img src="<%= blog.image %>" alt="<%= blog.title %>" class="img-thumbnail">
+                    </div>
+                    <div class="row">
+                        <div class="col-8 p-4">                
+                            <h1><%= blog.title %></h1>
+                        </div>
+                        <div class="col-4 p-3">
+                            <p class="text-muted">Published on <%= blog.created.toDateString() %></p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <a class="btn btn-warning" href="/blogs/<%= blog._id %>/edit">Edit Blog</a>
+                                </div>
+                                <div class="col-6">
+                                    <form class="form-inline" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="btn btn-danger mb-2">Delete</button>
+                                    </form>
+                                </div>
+                            </div>                         
+                        </div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="row">
+                            <div class="col-12 p-3 border-top">
+                                <p><%= blog.body %></p>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include('partials/footer') -%>

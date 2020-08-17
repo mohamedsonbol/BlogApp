@@ -1,0 +1,26 @@
+<%- include('partials/header') -%>
+<div id="newBlog">
+    <div class="container">
+        <div class="h1">Edit <%= blog.title %> Blog</div>
+        <form action="/blogs/<%= blog._id %>?_method=PUT" method="post">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="blog[title]" class="form-control" id="title" value="<%= blog.title %>">
+            </div>
+            <div class="form-group">
+                <label for="image">Blog Image</label>
+                <input type="text" name="blog[image]" class="form-control" id="image" value="<%= blog.image %>">
+            </div>
+            <div class="mb-3">
+                <label for="body">Textarea</label>
+                <textarea class="form-control" name="blog[body]" id="body" placeholder="Add your content here..." required><%= blog.body %></textarea>
+                <div class="invalid-feedback" >
+                  Please enter a message in the textarea.
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Add Blog</button>
+        </form>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>
