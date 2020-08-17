@@ -4,7 +4,7 @@ expressSanitizer = require("express-sanitizer"),
 mongoose       = require("mongoose"),
 express        = require("express"),
 app            = express(),
-port           = 3000;
+port           = process.env.PORT || 3000;
 
 // APP CONFIG
 mongoose.connect("mongodb://localhost/restful_blog_app",
