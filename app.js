@@ -1,17 +1,25 @@
+require('dotenv').config();
+
 var bodyParser = require("body-parser"),
 methodOverride = require("method-override"),
 expressSanitizer = require("express-sanitizer"),
 mongoose       = require("mongoose"),
 express        = require("express"),
 app            = express(),
-port           = process.env.PORT || 3000;
+port           = process.env.PORT || 3000
+
 
 // APP CONFIG
-mongoose.connect("mongodb://localhost/restful_blog_app",
+mongoose.connect(process.env.DATABASEURL,
 {   useNewUrlParser: true, 
     useUnifiedTopology: true,
-    useFindAndModify: false}
-);
+    useFindAndModify: false
+}).then(() => {
+    console.log('Connected to DB!');
+}).catch(err => {
+    console.log("ERROR!:", err.message);
+});
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -109,6 +117,6 @@ app.delete('/blogs/:id', (req, res) => {
 })
 
 // LISTINING ON PORT
-app.listen(port, () => {
+app.listen(port, process.env.IP, () => {
     console.log(`Listining on ${port}`);
 })
