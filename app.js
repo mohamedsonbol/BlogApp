@@ -6,11 +6,13 @@ expressSanitizer = require("express-sanitizer"),
 mongoose       = require("mongoose"),
 express        = require("express"),
 app            = express(),
-port           = process.env.PORT || 3000
+Blog           = require('./models/blog'),
+port           = process.env.PORT || 3000,
+connectDB       = process.env.DATABASEURL || "mongodb://localhost/restful_blog_app"
 
 
 // APP CONFIG
-mongoose.connect(process.env.DATABASEURL,
+mongoose.connect(connectDB,
 {   useNewUrlParser: true, 
     useUnifiedTopology: true,
     useFindAndModify: false
@@ -25,15 +27,6 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
-
-// MONGOOSE/MODEL CONFIG
-var blogSchema = new mongoose.Schema({
-    title: String,
-    image: String,
-    body: String,
-    created: {type: Date, default: Date.now}
-});
-var Blog = mongoose.model('Blog', blogSchema);
 
 // RESTFUL ROUTES
 app.get('/', (req, res) => {
