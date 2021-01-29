@@ -13,10 +13,10 @@
                         <div class="col-4 p-3">
                             <p class="text-muted">Published on <%= blog.created.toDateString() %></p>
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-md-6 mb-2">
                                     <a class="btn btn-warning" href="/blogs/<%= blog._id %>/edit">Edit Blog</a>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-md-6">
                                     <form class="form-inline" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
                                         <button type="submit" class="btn btn-danger mb-2">Delete</button>
                                     </form>
