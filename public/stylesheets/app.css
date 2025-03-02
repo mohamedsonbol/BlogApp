@@ -1,0 +1,11 @@
+.intro {
+    margin-top: 2em;
+}
+
+.jumbotron {
+    height: 400px;
+    background-image: url('../images/main.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
