@@ -1,19 +1,17 @@
 <%- include('partials/header') -%>
     <div id="blogs">
         <div class="container">
-            <div class="intro">
-                <div class="jumbotron">
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <h1>WELCOME TO MY BLOG</h1>
-                            <h3>A simple blog created from scratch using Node.js, EJS, and MongoDB.</h3>
-                            <p>The app is fully responsive. I'm currently working on adding user Authentication.</p>
-                            
-                        </div>
-                        <div class="col-12">
-                            <p>Why don't you try to and add a nice post?</p>
-                            <a class="btn btn-light" href="/blogs/new" role="button">Add New Blog</a>
-                        </div>
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <h1>WELCOME TO MY BLOG</h1>
+                        <h3>A simple blog created from scratch using Node.js, EJS, and MongoDB.</h3>
+                        <p>The app is fully responsive. I'm currently working on adding user Authentication.</p>
+
+                    </div>
+                    <div class="col-12">
+                        <p>Why don't you try to and add a nice post?</p>
+                        <a class="btn btn-light" href="/blogs/new" role="button">Add New Blog</a>
                     </div>
                 </div>
             </div>
@@ -22,18 +20,22 @@
                     <% blogs.forEach(function(blog) { %>
                         <div class="col-sm-6 p-2">
                             <div class="card">
-                            <img src="<%= blog.image %>" class="card-img-top" alt="...">
-                              <div class="card-body">
-                                <h5 class="card-title"><a href="/blogs/<%= blog._id %>"><%= blog.title %></a></h5>
-                                <h6 class="card-subtitle mb-2 text-muted"><%= blog.created.toDateString() %></h6>
-                                <p class="card-text"><%- blog.body.substring(0, 100) %></p>
-                                <a href="/blogs/<%= blog._id %>" class="btn btn-primary">Read More</a>
-                              </div>
+                                <img src="<%= blog.image %>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a href="/blogs/<%= blog._id %>">
+                                            <%= blog.title %>
+                                        </a></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">
+                                        <%= blog.created.toDateString() %>
+                                    </h6>
+                                    <p class="card-text"><%- blog.body.substring(0, 100) %></p>
+                                    <a href="/blogs/<%= blog._id %>" class="btn btn-primary">Read More</a>
+                                </div>
                             </div>
                         </div>
-                    <% }) %>
-                  </div>
+                        <% }) %>
+                </div>
             </div>
         </div>
     </div>
-<%- include('partials/footer') -%>
+    <%- include('partials/footer') -%>
